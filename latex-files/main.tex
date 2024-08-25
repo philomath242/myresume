@@ -1,0 +1,283 @@
+%
+% Academic CV with LaTeX
+% Author: Prashik Deshpande
+% LinkedIn: https://www.linkedin.com/in/prashikdeshpande/
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: prashikdeshpande24@gmail.com
+%
+
+
+
+\documentclass[a4paper,10pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.3mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\textrm{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.0mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+	{\Large\textbf{Prashik Deshpande}}
+\end{center}
+\vspace{-6mm}
+
+
+
+\begin{center}
+	\small{
+		\socialicon{\faLinkedin} \href{https://www.linkedin.com/in/prashikdeshpande/}{Prashik Deshpande} | 
+		\socialicon{\faGithub} \href{https://github.com/philomath242}{philomath242} 
+		|
+		\socialicon{\faEnvelope} \href{mailto:prashikdeshpande24@gmail.com}{prashikdeshpande24@gmail.com}
+		|
+		\socialicon{\faMobile} \href{callto:9511728414}{+91-9511728414}
+	}
+\end{center}
+
+
+% EDUCATION
+
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Int. M. Sc. in Mathematics and Computing}{CGPA : \textbf{7.44}/10}
+{Indian Institute of Technology Kharagpur}{2023}
+
+
+\resumeSubheading
+{Higher Secondary School Certificate}{Percentage : \textbf{90.31\%}}
+{Maharashtra State Board of Secondary and Higher Secondary Education}{2017}
+
+\resumeSubheading
+{Secondary School Certificate}{Percentage : \textbf{93.20\%}}
+{Maharashtra State Board of Secondary and Higher Secondary Education}{2015}
+
+\resumeSubHeadingListEnd
+\vspace{-5mm}
+
+
+
+\section{\textbf{Work Experience}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+\resumeSubheading
+{{Squarepoint | Platform Application Services}}{Bengaluru, India}
+{Systems Specialist and Database Administrator}{July 2023 - present}
+\resumeItemListStart
+\item Developed custom configuration unit files to manage Linux and Windows hosts for infrastructure management
+\item Created Ansible playbook for Redis deployments from scratch to provision databases on-demand
+\resumeItemListEnd 
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+
+\section{\textbf{Projects}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{{Topological Data Analysis and Simplicial Neural Networks | MTP | Prof. Bibhas Adhikari}}{}
+{}{July 2022 - April 2023}
+\vspace{-3mm}
+\resumeItemListStart
+\item Applied toplogical formulations for \textbf{data analysis} using persistent homology for analyzing shape of the data
+\item Remodeled \textbf{graph representation learning} to generalize it to simplices which map higher dimensional relationships
+\item Modified \textbf{link prediction problem} in network analysis to \textbf{simplex prediction problem} for complex networks
+\item Modeled it using \textbf{simplicial neural networks} for supervised learning using the topological features of the network
+\resumeItemListEnd 
+
+\resumeSubHeadingListEnd
+
+
+\section{\textbf{Leadership Experience}}
+
+\resumeSubHeadingListStart
+\resumeSubheading
+{Associate Technology Coordinator under Technology Students' Gymkhana IITKGP }{}
+{} {July 2019 - February 2020}
+\vspace{-3mm}
+\resumeItemListStart
+\item Maintained the Technology Students' Gymkhana website and enhanced the mobile experience for around 15000 students
+\item Automated the fetching of mess menus for different halls of residence using Google Sheets API and Fetch API
+\item Overhauled interactive infographics for previous years' General Championships and Inter IIT competitions
+\item Functionalized student ERP authentication for a Mess Rebate Form and enabled a portal with database using SQLite
+\resumeItemListEnd 
+
+
+ 
+
+\resumeSubHeadingListEnd
+
+
+
+\section{\textbf{Coursework, Certifications and Skills }}
+\vspace{1mm}
+\resumeHeadingSkillStartS
+\resumeSubItem{Languages :} 
+{Python, C++, Go, HTML5, CSS, Javascript, SQL, PHP, Dart, LaTeX}
+\resumeSubItem{Softwares / Technologies :}
+{PostgreSQL, AWS, Redis, MongoDB, Microsoft Excel, Adobe Photoshop}
+\resumeSubItem{Libraries / Frameworks :}
+{React.js 1, Flask, Django, NumPy, Pandas, Flutter}
+\resumeSubItem{Specializations :}
+{Skill 1, Skill 2, Skill 3, Skill 4}
+ 
+\resumeHeadingSkillEnd
+
+\section{\textbf{Awards and Achievements}}
+
+
+
+
+
+
+
+\end{document}
